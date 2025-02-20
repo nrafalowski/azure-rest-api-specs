@@ -14,7 +14,7 @@ no-namespace-folders: true
 
 ``` yaml $(python)
 multiapi: true
-default-api-version: "2022-06-15"
+default-api-version: "2023-06-01"
 clear-output-folder: true
 batch:
   - tag: package-2015-05
@@ -32,6 +32,8 @@ batch:
   - tag: package-2021-10
   - tag: package-2022-04-01-only
   - tag: package-2022-06-15-only
+  - tag: package-2023-06-01-python-only
+  - tag: package-2024-02-01-preview-only
   - multiapiscript: true
 ```
 
@@ -40,13 +42,31 @@ output-folder: $(python-sdks-folder)/applicationinsights/azure-mgmt-applicationi
 perform-load: false
 ```
 
+### Tag: package-2024-02-01-preview-only and python
+
+These settings apply only when `--tag=package-2024-02-01-preview-only --python` is specified on the command line.
+
+``` yaml $(tag) == 'package-2024-02-01-preview-only' && $(python)
+namespace: azure.mgmt.applicationinsights.v2024_02_01_preview
+output-folder: $(python-sdks-folder)/applicationinsights/azure-mgmt-applicationinsights/azure/mgmt/applicationinsights/v2024_02_01_preview
+```
+
+### Tag: package-2023-06-01-python-only and python
+
+These settings apply only when `--tag=package-2023-06-01-python-only --python` is specified on the command line.
+
+``` yaml $(tag) == 'package-2023-06-01-python-only' && $(python)
+namespace: azure.mgmt.applicationinsights.v2023_06_01
+output-folder: $(python-sdks-folder)/applicationinsights/azure-mgmt-applicationinsights/azure/mgmt/applicationinsights/v2023_06_01
+```
+
 ### Tag: package-2022-06-15-only and python
 
 These settings apply only when `--tag=package-2022-06-15-only --python` is specified on the command line.
 
 ``` yaml $(tag) == 'package-2022-06-15-only' && $(python)
-namespace: azure.mgmt.applicationinsights.v2022_06_15_only
-output-folder: $(python-sdks-folder)/applicationinsights/azure-mgmt-applicationinsights/azure/mgmt/applicationinsights/v2022_06_15_only
+namespace: azure.mgmt.applicationinsights.v2022_06_15
+output-folder: $(python-sdks-folder)/applicationinsights/azure-mgmt-applicationinsights/azure/mgmt/applicationinsights/v2022_06_15
 ```
 
 ### Tag: package-2015-05 and python
